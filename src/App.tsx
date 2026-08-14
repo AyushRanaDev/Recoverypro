@@ -122,7 +122,8 @@ export function App() {
       });
 
       if (!response.ok) {
-        throw new Error("AI service failed");
+        const errorData = (await response.json().catch(() => null)) as { detail?: string; error?: string } | null;
+        throw new Error(errorData?.detail || errorData?.error || "AI service failed");
       }
 
       const data = (await response.json()) as { reply: string };
@@ -133,7 +134,8 @@ export function App() {
       };
       setMessages((current) => [...current, assistantMessage]);
       speak(data.reply);
-    } catch {
+    } catch (error) {
+      console.error(error);
       const fallback =
         "I could not reach the AI service. For the next minute: put both feet on the floor, drink water if safe, move away from triggers, and contact your support person or local emergency services if safety is at risk.";
       setMessages((current) => [

@@ -18,7 +18,7 @@ Use Groq for the AI text engine. Yes, you can use a Groq key if your account has
 Create:
 
 - `GROQ_API_KEY` from the Groq console
-- Optional `GROQ_MODEL`, default: `llama-3.3-70b-versatile`
+- Optional `GROQ_MODEL`, default: `openai/gpt-oss-20b`
 
 You do not need a separate paid voice key for this version. It uses browser speech recognition and speech synthesis. Chrome/Edge usually work best. If you later want production-grade voice, good options are OpenAI Realtime API, Deepgram, ElevenLabs, or AssemblyAI, but those may require billing.
 
@@ -33,7 +33,7 @@ Put your Groq key in `.env.local`:
 
 ```bash
 GROQ_API_KEY=your_key_here
-GROQ_MODEL=llama-3.3-70b-versatile
+GROQ_MODEL=openai/gpt-oss-20b
 ```
 
 Run:
